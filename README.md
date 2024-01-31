@@ -3,7 +3,7 @@
 ### Prerequisites:
 
 - NodeJS installed
-- mySQL installed and running
+- MySQL installed and running
 
 ## Start the backend
 
@@ -15,6 +15,8 @@ $ npm run populate-sample-data
 $ npm start
 ```
 
+###### Note: API server runs on port 4000
+
 ## Start the frontend
 
 ```sh
@@ -23,7 +25,9 @@ $ npm install
 $ npm start
 ```
 
-Visit http://localhost:4000
+- Visit http://localhost:3000
+- enter `syedfaizan` as the username as thats the only user in the database to activate session (JWT is created in the BG)
+- explore the books Page, Search by title, author, genre and also within a window of published dates
 
 ### Run Test Cases
 

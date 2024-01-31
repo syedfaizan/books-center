@@ -5,21 +5,26 @@ body {
 }
 
 .marginTop {
-  margin-top: 10%
+  margin-top: 7%;
 }
 
 .inputMargin {
-  margin-bottom: 5px
+  margin-bottom: 5px;
 }
 
-.red{
-  color: red
+.center {
+  display: flex;
+  justify-content: center;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin: 0; 
+.red {
+  color: red;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
 }

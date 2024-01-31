@@ -70,6 +70,7 @@ export default class BookList extends Component {
               ></input>
             </div>
             <div className="col-md-4">
+              Genre:{" "}
               <select
                 value={this.state.genre}
                 onChange={this.onGenreChange.bind(this)}
@@ -83,7 +84,7 @@ export default class BookList extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col-md-3">
+            <div className="col-md-4">
               start Date:{" "}
               <input
                 className="form-control col-md-8 inputMargin"
@@ -92,7 +93,7 @@ export default class BookList extends Component {
                 type="date"
               ></input>
             </div>
-            <div className="col-md-3">
+            <div className="col-md-4">
               end Date :{" "}
               <input
                 className="form-control col-md-8 inputMargin"
@@ -101,20 +102,37 @@ export default class BookList extends Component {
                 type="date"
               ></input>
             </div>
-            <div className="col-md-3">
-              <button onClick={this.onSearch.bind(this)}>Search</button>
+            <div className="col-md-4">
+              <button
+                className="btn btn-primary marginTop"
+                onClick={this.onSearch.bind(this)}
+              >
+                Search 🔎
+              </button>
             </div>
           </div>
         </div>
         <hr />
         <div>
           <div className="row ">
-            <div className="col-md-2">ISBN</div>
-            <div className="col-md-2">Title</div>
-            <div className="col-md-2">Author</div>
-            <div className="col-md-2">Genre</div>
-            <div className="col-md-2">Description</div>
-            <div className="col-md-2">Published</div>
+            <div className="col-md-2">
+              <strong>ISBN</strong>
+            </div>
+            <div className="col-md-2">
+              <strong>Title</strong>
+            </div>
+            <div className="col-md-2">
+              <strong>Author</strong>
+            </div>
+            <div className="col-md-2">
+              <strong>Genre</strong>
+            </div>
+            <div className="col-md-2">
+              <strong>Description</strong>
+            </div>
+            <div className="col-md-2">
+              <strong>Published</strong>
+            </div>
           </div>
           <hr />
           {this.state.books.map((book) => (
@@ -134,7 +152,7 @@ export default class BookList extends Component {
             </div>
           ))}
         </div>
-        <div className="row">
+        <div className="row center">
           <button
             onClick={() => {
               const { title, author, genre, startDate, endDate } = this.state;
@@ -148,7 +166,7 @@ export default class BookList extends Component {
               });
             }}
           >
-            next page
+            next page ➡️
           </button>
         </div>
       </div>
