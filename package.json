@@ -8,12 +8,16 @@
     "start": "node ./bin/www",
     "start-dev": "nodemon ./bin/www",
     "migrate": "sequelize db:migrate",
-    "undo-migrate": "sequelize db:migrate:undo"
+    "undo-migrate": "sequelize db:migrate:undo",
+    "populate-sample-data": "node ./sample-data/inject-sample-data.js"
   },
   "keywords": [],
   "author": "Syed Faizan",
   "license": "ISC",
   "dependencies": {
+    "mocha": "^5.0.5",
+    "chai": "^4.1.2",
+    "sinon": "^4.4.9",
     "cors": "^2.8.4",
     "express": "^4.18.2",
     "jsonwebtoken": "^8.2.0",

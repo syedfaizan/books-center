@@ -17,32 +17,94 @@ export default class BookList extends Component {
     this.fetchBooks(this.state.page);
   }
 
-  fetchBooks(page) {
-    return http.get("/book", { params: { page } }).then((res) => {
-      let books = res.data.items;
-      this.setState({
-        books,
-        page: page + 1,
+  fetchBooks(page, searchQuery) {
+    return http
+      .get("/book", { params: { page, ...searchQuery } })
+      .then((res) => {
+        let books = res.data.items;
+        this.setState({
+          books,
+          page: page + 1,
+        });
       });
+  }
+
+  onChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value,
     });
   }
+
+  onGenreChange(event) {
+    this.setState({
+      genre: event.target.value,
+    });
+  }
+
+  onSearch() {
+    const { title, author, genre, startDate, endDate } = this.state;
+    this.fetchBooks(1, { title, author, genre, startDate, endDate });
+  }
+
   render() {
     return (
       <div className="container ">
         <h3 className="text-center">Book Catalog</h3>
         <hr />
         <div>
-          <input placeholder="search by title"></input>
-          <input placeholder="search by author"></input>
-          <select>
-            <option>Poetry</option>
-            <option>fiction</option>
-            <option>nonfiction</option>
-            <option>drama</option>
-            <option>prose</option>
-          </select>
-          start Date: <input type="date"></input>
-          end Date : <input type="date"></input>
+          <div className="row">
+            <div className="col-md-4">
+              <input
+                className="form-control col-md-8 inputMargin"
+                name="title"
+                placeholder="search by title"
+                onChange={this.onChange.bind(this)}
+              ></input>
+            </div>
+            <div className="col-md-4">
+              <input
+                className="form-control col-md-8 inputMargin"
+                placeholder="search by author"
+                name="author"
+                onChange={this.onChange.bind(this)}
+              ></input>
+            </div>
+            <div className="col-md-4">
+              <select
+                value={this.state.genre}
+                onChange={this.onGenreChange.bind(this)}
+              >
+                <option>Poetry</option>
+                <option>fiction</option>
+                <option>nonfiction</option>
+                <option>drama</option>
+                <option>prose</option>
+              </select>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-3">
+              start Date:{" "}
+              <input
+                className="form-control col-md-8 inputMargin"
+                onChange={this.onChange.bind(this)}
+                name="startDate"
+                type="date"
+              ></input>
+            </div>
+            <div className="col-md-3">
+              end Date :{" "}
+              <input
+                className="form-control col-md-8 inputMargin"
+                onChange={this.onChange.bind(this)}
+                name="endDate"
+                type="date"
+              ></input>
+            </div>
+            <div className="col-md-3">
+              <button onClick={this.onSearch.bind(this)}>Search</button>
+            </div>
+          </div>
         </div>
         <hr />
         <div>
@@ -75,7 +137,15 @@ export default class BookList extends Component {
         <div className="row">
           <button
             onClick={() => {
-              this.fetchBooks(this.state.page);
+              const { title, author, genre, startDate, endDate } = this.state;
+
+              this.fetchBooks(this.state.page, {
+                title,
+                author,
+                genre,
+                startDate,
+                endDate,
+              });
             }}
           >
             next page

@@ -1,21 +1,21 @@
-# UI for Digital library
+# UI for Books Center
 
 ### Prerequisites:
-- NodeJS +6 installed
 
-### Install 
-````sh
-$ cd app\
+- NodeJS installed
+
+### Install
+
+```sh
+$ cd ui\
 $ npm install
 $ npm start
-````
+```
 
 ### Run Test Cases
 
-````sh
+```sh
 $ npm test
-````
-
+```
 
 ###### Syed Faizan
-
